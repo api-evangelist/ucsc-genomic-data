@@ -10,8 +10,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-03-01'
 modified: '2026-03-16'
 url: >-
@@ -27,8 +26,7 @@ apis:
       Consequently, Web APIs may not be the best way to get data from the UCSC Genome
       Browser.
     humanURL: ' https://genome.ucsc.edu/goldenPath/help/api.html'
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: ' https://genome.ucsc.edu/goldenPath/help/api.html'
