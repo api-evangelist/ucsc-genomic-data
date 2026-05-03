@@ -1,0 +1,38 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.genome.ucsc.edu/list/tracks?genome=hg38&trackLeavesOnly=1",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "genome": "hg38",
+      "tracks": {
+        "gold": {
+          "track": "gold",
+          "shortLabel": "Assembly",
+          "longLabel": "Assembly from Fragments",
+          "type": "bed 9 +",
+          "visibility": "hide"
+        },
+        "ncbiRefSeq": {
+          "track": "ncbiRefSeq",
+          "shortLabel": "RefSeq All",
+          "longLabel": "NCBI RefSeq genes, curated and predicted sets (NM_*, XM_*, NR_*, XR_*, NP_* or YP_*)",
+          "type": "bigGenePred",
+          "visibility": "pack"
+        },
+        "knownGene": {
+          "track": "knownGene",
+          "shortLabel": "GENCODE V47",
+          "longLabel": "GENCODE V47 Comprehensive Transcript Set (only Basic displayed by default)",
+          "type": "bigGenePred",
+          "visibility": "pack"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "title": "UCSC Genome Browser API Structure",
+  "description": "JSON structure documentation for the UCSC Genome Browser REST API key entities.",
+  "entities": {
+    "GenomeAssembly": {
+      "description": "A genome assembly available in the UCSC Genome Browser.",
+      "fields": {
+        "name": "string — Assembly identifier (e.g., hg38)",
+        "organism": "string — Common organism name",
+        "scientificName": "string — Binomial scientific name",
+        "description": "string — Assembly description",
+        "sourceName": "string — Assembly source identifier",
+        "taxId": "integer — NCBI taxonomy ID"
+      }
+    },
+    "Track": {
+      "description": "An annotation data track in the UCSC Genome Browser.",
+      "fields": {
+        "track": "string — Track name identifier",
+        "shortLabel": "string — Short display label (max 17 chars)",
+        "longLabel": "string — Full description label",
+        "type": "string — Data type (bed, bigBed, bigWig, bam, etc.)",
+        "visibility": "string(enum) — Default visibility (hide, dense, pack, full)",
+        "html": "string — Track description page path"
+      }
+    },
+    "SequenceResult": {
+      "description": "A DNA sequence response for a genomic region.",
+      "fields": {
+        "genome": "string — Genome assembly identifier",
+        "chrom": "string — Chromosome identifier (e.g., chr1, chrM)",
+        "start": "integer — Start position (0-based)",
+        "end": "integer — End position (1-based)",
+        "dna": "string — DNA nucleotide sequence"
+      }
+    },
+    "TrackHub": {
+      "description": "A publicly registered UCSC Track Hub.",
+      "fields": {
+        "hubUrl": "string(uri) — Hub definition URL",
+        "shortLabel": "string — Hub short label",
+        "longLabel": "string — Hub description",
+        "registrationTime": "string — Registration date",
+        "dbCount": "integer — Number of genome databases in the hub"
+      }
+    }
+  }
+}

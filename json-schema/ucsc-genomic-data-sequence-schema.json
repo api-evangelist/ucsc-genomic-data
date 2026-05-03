@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/ucsc-genomic-data/blob/main/json-schema/ucsc-genomic-data-sequence-schema.json",
+  "title": "UCSC DNA Sequence Result",
+  "description": "Schema for a DNA sequence response from the UCSC Genome Browser API.",
+  "type": "object",
+  "required": ["genome", "chrom", "dna"],
+  "properties": {
+    "genome": {
+      "type": "string",
+      "description": "Genome assembly identifier (e.g., hg38, mm39)."
+    },
+    "chrom": {
+      "type": "string",
+      "description": "Chromosome identifier (e.g., chr1, chrM)."
+    },
+    "start": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Start position (0-based, half-open coordinates)."
+    },
+    "end": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "End position (1-based, half-open coordinates)."
+    },
+    "dna": {
+      "type": "string",
+      "pattern": "^[acgtACGTnN]*$",
+      "description": "DNA sequence string (IUPAC nucleotide characters)."
+    }
+  }
+}

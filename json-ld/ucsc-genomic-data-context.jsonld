@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ucsc": "https://genome.ucsc.edu/vocab/",
+    "bioschemas": "https://bioschemas.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "so": "http://purl.obolibrary.org/obo/SO_",
+
+    "GenomeAssembly": "bioschemas:Taxon",
+    "Track": "ucsc:Track",
+    "SequenceRegion": "so:0001411",
+    "Chromosome": "so:0000340",
+    "TrackHub": "ucsc:TrackHub",
+
+    "name": { "@id": "schema:name", "@type": "xsd:string" },
+    "description": { "@id": "schema:description", "@type": "xsd:string" },
+    "organism": { "@id": "bioschemas:taxonRank", "@type": "xsd:string" },
+    "scientificName": { "@id": "schema:scientificName", "@type": "xsd:string" },
+    "taxId": { "@id": "bioschemas:taxonomicRange", "@type": "xsd:integer" },
+
+    "track": { "@id": "schema:identifier", "@type": "xsd:string" },
+    "shortLabel": { "@id": "schema:alternateName", "@type": "xsd:string" },
+    "longLabel": { "@id": "schema:name", "@type": "xsd:string" },
+    "type": { "@id": "schema:additionalType", "@type": "xsd:string" },
+    "visibility": { "@id": "ucsc:visibility", "@type": "xsd:string" },
+
+    "genome": { "@id": "ucsc:assembly", "@type": "xsd:string" },
+    "chrom": { "@id": "ucsc:chromosome", "@type": "xsd:string" },
+    "start": { "@id": "ucsc:startPosition", "@type": "xsd:integer" },
+    "end": { "@id": "ucsc:endPosition", "@type": "xsd:integer" },
+    "dna": { "@id": "ucsc:dnaSequence", "@type": "xsd:string" },
+
+    "hubUrl": { "@id": "schema:url", "@type": "@id" }
+  }
+}

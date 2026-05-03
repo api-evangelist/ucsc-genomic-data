@@ -1,0 +1,95 @@
+vocabulary:
+  name: UCSC Genomic Data API Vocabulary
+  description: >-
+    Domain vocabulary for the UCSC Genome Browser REST API covering genomics,
+    bioinformatics, genome assemblies, annotation tracks, DNA sequences,
+    and biological coordinate systems.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+  source: https://genome.ucsc.edu/goldenPath/help/api.html
+
+  domains:
+    - name: Genome Assemblies
+      description: Genome assembly concepts and identifiers.
+      terms:
+        - term: Genome Assembly
+          definition: A computational representation of a genome constructed by assembling sequenced DNA fragments.
+          synonyms: [Assembly, Reference Genome]
+        - term: Assembly Identifier
+          definition: A short alphanumeric code identifying a specific genome assembly (e.g., hg38, mm39, GRCh38).
+          synonyms: [Genome Build, Assembly Name]
+        - term: hg38
+          definition: The most current human genome reference assembly (GRCh38/hg38) used in UCSC.
+          synonyms: [GRCh38, Human Reference Genome 38]
+        - term: GenArk
+          definition: UCSC's repository of assembly hubs derived from NCBI GenBank and RefSeq assemblies.
+        - term: Tax ID
+          definition: NCBI Taxonomy Database numeric identifier for an organism.
+        - term: Track Hub
+          definition: A remotely hosted collection of genome tracks defined in a hub.txt file and registered with UCSC.
+          synonyms: [Assembly Hub, Data Hub]
+
+    - name: Annotation Tracks
+      description: Genomic annotation data track concepts.
+      terms:
+        - term: Track
+          definition: A layer of genomic annotation data displayed in the Genome Browser (e.g., genes, repeats, conservation).
+        - term: bigBed
+          definition: An indexed binary BED file format for large annotation datasets hosted remotely.
+        - term: bigWig
+          definition: An indexed binary wiggle file format for genome-wide signal data (e.g., coverage, ChIP-seq).
+        - term: BAM
+          definition: Binary Alignment Map — compressed binary format for aligned sequencing reads.
+        - term: VCF
+          definition: Variant Call Format — standard format for genomic variants (SNPs, indels).
+        - term: Visibility Mode
+          definition: The display mode for a track in the Genome Browser (hide, dense, squish, pack, full).
+        - term: Composite Track
+          definition: A parent track containing multiple sub-tracks of related data.
+        - term: Track Leaf
+          definition: An individual data track within a composite, with no sub-tracks.
+
+    - name: Sequences
+      description: DNA sequence and coordinate concepts.
+      terms:
+        - term: Chromosome
+          definition: A discrete DNA molecule in a genome, identified by name (e.g., chr1, chrM).
+          synonyms: [Contig, Scaffold]
+        - term: Genomic Coordinates
+          definition: A position or range on a genome defined by chromosome, start, and end positions.
+          synonyms: [Genome Position, Genomic Region]
+        - term: Half-Open Coordinates
+          definition: UCSC's 0-based, half-open coordinate system where start is 0-indexed and end is 1-indexed.
+          synonyms: [0-based Coordinates, UCSC Coordinates]
+        - term: Reverse Complement
+          definition: The complementary DNA strand read in the reverse direction.
+        - term: DNA Sequence
+          definition: A series of nucleotide bases (A, C, G, T, N) representing a region of DNA.
+        - term: IUPAC Nucleotide Code
+          definition: Standardized single-letter codes for nucleotides including ambiguity codes.
+
+    - name: Bioinformatics
+      description: General genomics and bioinformatics terms.
+      terms:
+        - term: RefSeq
+          definition: NCBI Reference Sequence Database — curated reference sequences for genes and genomes.
+        - term: GENCODE
+          definition: Comprehensive catalog of human gene features from the Sanger Institute.
+        - term: BotDelay
+          definition: UCSC's rate-limiting mechanism that throttles excessive API requests.
+        - term: Rate Limiting
+          definition: Restriction to one API request per second recommended for UCSC Genome Browser.
+        - term: maxItemsOutput
+          definition: API parameter controlling the maximum number of annotation items returned (max 1,000,000).
+
+  categories:
+    - Genomics
+    - Bioinformatics
+    - Biology
+    - Research
+    - Data
+    - Open Science
+    - DNA Sequences
+    - Annotation
+    - Healthcare
