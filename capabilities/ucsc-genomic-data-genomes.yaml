@@ -1,0 +1,306 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: UCSC Genome Browser REST API — Genomes
+  description: 'UCSC Genome Browser REST API — Genomes. 5 operations. Lead operation: Find Genome. Self-contained Naftiko
+    capability covering one Ucsc Genomic Data business surface.'
+  tags:
+  - Ucsc Genomic Data
+  - Genomes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UCSC_GENOMIC_DATA_API_KEY: UCSC_GENOMIC_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucsc-genomic-data-genomes
+    baseUri: https://api.genome.ucsc.edu
+    description: UCSC Genome Browser REST API — Genomes business capability. Self-contained, no shared references.
+    resources:
+    - name: findGenome
+      path: /findGenome
+      operations:
+      - name: findgenome
+        method: GET
+        description: Find Genome
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query string (genome name, accession, or keyword).
+          required: true
+        - name: browser
+          in: query
+          type: string
+          description: Filter by browser name.
+        - name: year
+          in: query
+          type: integer
+          description: Filter assemblies by year.
+        - name: category
+          in: query
+          type: string
+          description: Filter by category.
+        - name: status
+          in: query
+          type: string
+          description: Filter by assembly status.
+        - name: level
+          in: query
+          type: string
+          description: Filter by assembly level.
+        - name: statsOnly
+          in: query
+          type: integer
+          description: Return only statistics if set to 1.
+        - name: maxItemsOutput
+          in: query
+          type: integer
+          description: Maximum number of items to return.
+    - name: list-chromosomes
+      path: /list/chromosomes
+      operations:
+      - name: listchromosomes
+        method: GET
+        description: List Chromosomes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier (e.g., hg38, mm39).
+          required: true
+        - name: hubUrl
+          in: query
+          type: string
+          description: URL of the hub.txt file for a track hub.
+        - name: track
+          in: query
+          type: string
+          description: Filter chromosomes by a specific track.
+    - name: list-files
+      path: /list/files
+      operations:
+      - name: listfiles
+        method: GET
+        description: List Genome Files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier (e.g., hg38, mm39).
+          required: true
+        - name: format
+          in: query
+          type: string
+          description: File format filter (e.g., bigBed, bigWig).
+        - name: maxItemsOutput
+          in: query
+          type: integer
+          description: Maximum number of files to return.
+    - name: list-genarkGenomes
+      path: /list/genarkGenomes
+      operations:
+      - name: listgenarkgenomes
+        method: GET
+        description: List GenArk Genomes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Filter by genome assembly name.
+        - name: maxItemsOutput
+          in: query
+          type: integer
+          description: Maximum number of items to return.
+    - name: list-ucscGenomes
+      path: /list/ucscGenomes
+      operations:
+      - name: listucscgenomes
+        method: GET
+        description: List UCSC Genomes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: ucsc-genomic-data-genomes-rest
+    port: 8080
+    description: REST adapter for UCSC Genome Browser REST API — Genomes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/findgenome
+      name: findgenome
+      description: REST surface for findGenome.
+      operations:
+      - method: GET
+        name: findgenome
+        description: Find Genome
+        call: ucsc-genomic-data-genomes.findgenome
+        with:
+          q: rest.q
+          browser: rest.browser
+          year: rest.year
+          category: rest.category
+          status: rest.status
+          level: rest.level
+          statsOnly: rest.statsOnly
+          maxItemsOutput: rest.maxItemsOutput
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/chromosomes
+      name: list-chromosomes
+      description: REST surface for list-chromosomes.
+      operations:
+      - method: GET
+        name: listchromosomes
+        description: List Chromosomes
+        call: ucsc-genomic-data-genomes.listchromosomes
+        with:
+          genome: rest.genome
+          hubUrl: rest.hubUrl
+          track: rest.track
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/files
+      name: list-files
+      description: REST surface for list-files.
+      operations:
+      - method: GET
+        name: listfiles
+        description: List Genome Files
+        call: ucsc-genomic-data-genomes.listfiles
+        with:
+          genome: rest.genome
+          format: rest.format
+          maxItemsOutput: rest.maxItemsOutput
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/genarkgenomes
+      name: list-genarkgenomes
+      description: REST surface for list-genarkGenomes.
+      operations:
+      - method: GET
+        name: listgenarkgenomes
+        description: List GenArk Genomes
+        call: ucsc-genomic-data-genomes.listgenarkgenomes
+        with:
+          genome: rest.genome
+          maxItemsOutput: rest.maxItemsOutput
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/ucscgenomes
+      name: list-ucscgenomes
+      description: REST surface for list-ucscGenomes.
+      operations:
+      - method: GET
+        name: listucscgenomes
+        description: List UCSC Genomes
+        call: ucsc-genomic-data-genomes.listucscgenomes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucsc-genomic-data-genomes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for UCSC Genome Browser REST API — Genomes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: find-genome
+      description: Find Genome
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-genomes.findgenome
+      with:
+        q: tools.q
+        browser: tools.browser
+        year: tools.year
+        category: tools.category
+        status: tools.status
+        level: tools.level
+        statsOnly: tools.statsOnly
+        maxItemsOutput: tools.maxItemsOutput
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-chromosomes
+      description: List Chromosomes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-genomes.listchromosomes
+      with:
+        genome: tools.genome
+        hubUrl: tools.hubUrl
+        track: tools.track
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-genome-files
+      description: List Genome Files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-genomes.listfiles
+      with:
+        genome: tools.genome
+        format: tools.format
+        maxItemsOutput: tools.maxItemsOutput
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-genark-genomes
+      description: List GenArk Genomes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-genomes.listgenarkgenomes
+      with:
+        genome: tools.genome
+        maxItemsOutput: tools.maxItemsOutput
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-ucsc-genomes
+      description: List UCSC Genomes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-genomes.listucscgenomes
+      outputParameters:
+      - type: object
+        mapping: $.

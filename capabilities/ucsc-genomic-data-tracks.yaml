@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: UCSC Genome Browser REST API — Tracks
+  description: 'UCSC Genome Browser REST API — Tracks. 3 operations. Lead operation: Get Track Data. Self-contained Naftiko
+    capability covering one Ucsc Genomic Data business surface.'
+  tags:
+  - Ucsc Genomic Data
+  - Tracks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UCSC_GENOMIC_DATA_API_KEY: UCSC_GENOMIC_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucsc-genomic-data-tracks
+    baseUri: https://api.genome.ucsc.edu
+    description: UCSC Genome Browser REST API — Tracks business capability. Self-contained, no shared references.
+    resources:
+    - name: getData-track
+      path: /getData/track
+      operations:
+      - name: gettrackdata
+        method: GET
+        description: Get Track Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier (e.g., hg38, mm39).
+          required: true
+        - name: track
+          in: query
+          type: string
+          description: Track name to retrieve data from.
+          required: true
+        - name: chrom
+          in: query
+          type: string
+          description: Chromosome to retrieve data for.
+        - name: start
+          in: query
+          type: integer
+          description: Start position (0-based).
+        - name: end
+          in: query
+          type: integer
+          description: End position (1-based).
+        - name: hubUrl
+          in: query
+          type: string
+          description: URL of the hub.txt file for a track hub.
+        - name: maxItemsOutput
+          in: query
+          type: integer
+          description: Maximum number of annotation items to return.
+        - name: jsonOutputArrays
+          in: query
+          type: integer
+          description: Set to 1 to format output as JSON arrays instead of objects.
+    - name: list-schema
+      path: /list/schema
+      operations:
+      - name: gettrackschema
+        method: GET
+        description: Get Track Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier (e.g., hg38, mm39).
+          required: true
+        - name: track
+          in: query
+          type: string
+          description: Track name to return schema for.
+          required: true
+        - name: hubUrl
+          in: query
+          type: string
+          description: URL of the hub.txt file for a track hub.
+    - name: list-tracks
+      path: /list/tracks
+      operations:
+      - name: listtracks
+        method: GET
+        description: List Tracks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier (e.g., hg38, mm39). Required unless hubUrl is provided.
+          required: true
+        - name: hubUrl
+          in: query
+          type: string
+          description: URL of the hub.txt file for a track hub.
+        - name: trackLeavesOnly
+          in: query
+          type: integer
+          description: Set to 1 to return only leaf tracks (hide composite containers).
+  exposes:
+  - type: rest
+    namespace: ucsc-genomic-data-tracks-rest
+    port: 8080
+    description: REST adapter for UCSC Genome Browser REST API — Tracks. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/getdata/track
+      name: getdata-track
+      description: REST surface for getData-track.
+      operations:
+      - method: GET
+        name: gettrackdata
+        description: Get Track Data
+        call: ucsc-genomic-data-tracks.gettrackdata
+        with:
+          genome: rest.genome
+          track: rest.track
+          chrom: rest.chrom
+          start: rest.start
+          end: rest.end
+          hubUrl: rest.hubUrl
+          maxItemsOutput: rest.maxItemsOutput
+          jsonOutputArrays: rest.jsonOutputArrays
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/schema
+      name: list-schema
+      description: REST surface for list-schema.
+      operations:
+      - method: GET
+        name: gettrackschema
+        description: Get Track Schema
+        call: ucsc-genomic-data-tracks.gettrackschema
+        with:
+          genome: rest.genome
+          track: rest.track
+          hubUrl: rest.hubUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/tracks
+      name: list-tracks
+      description: REST surface for list-tracks.
+      operations:
+      - method: GET
+        name: listtracks
+        description: List Tracks
+        call: ucsc-genomic-data-tracks.listtracks
+        with:
+          genome: rest.genome
+          hubUrl: rest.hubUrl
+          trackLeavesOnly: rest.trackLeavesOnly
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucsc-genomic-data-tracks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for UCSC Genome Browser REST API — Tracks. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-track-data
+      description: Get Track Data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-tracks.gettrackdata
+      with:
+        genome: tools.genome
+        track: tools.track
+        chrom: tools.chrom
+        start: tools.start
+        end: tools.end
+        hubUrl: tools.hubUrl
+        maxItemsOutput: tools.maxItemsOutput
+        jsonOutputArrays: tools.jsonOutputArrays
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-track-schema
+      description: Get Track Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-tracks.gettrackschema
+      with:
+        genome: tools.genome
+        track: tools.track
+        hubUrl: tools.hubUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tracks
+      description: List Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-tracks.listtracks
+      with:
+        genome: tools.genome
+        hubUrl: tools.hubUrl
+        trackLeavesOnly: tools.trackLeavesOnly
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,109 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: UCSC Genome Browser REST API — Hubs
+  description: 'UCSC Genome Browser REST API — Hubs. 2 operations. Lead operation: List Hub Genomes. Self-contained Naftiko
+    capability covering one Ucsc Genomic Data business surface.'
+  tags:
+  - Ucsc Genomic Data
+  - Hubs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UCSC_GENOMIC_DATA_API_KEY: UCSC_GENOMIC_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucsc-genomic-data-hubs
+    baseUri: https://api.genome.ucsc.edu
+    description: UCSC Genome Browser REST API — Hubs business capability. Self-contained, no shared references.
+    resources:
+    - name: list-hubGenomes
+      path: /list/hubGenomes
+      operations:
+      - name: listhubgenomes
+        method: GET
+        description: List Hub Genomes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: hubUrl
+          in: query
+          type: string
+          description: URL of the hub.txt file for the track hub.
+          required: true
+    - name: list-publicHubs
+      path: /list/publicHubs
+      operations:
+      - name: listpublichubs
+        method: GET
+        description: List Public Hubs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: ucsc-genomic-data-hubs-rest
+    port: 8080
+    description: REST adapter for UCSC Genome Browser REST API — Hubs. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/list/hubgenomes
+      name: list-hubgenomes
+      description: REST surface for list-hubGenomes.
+      operations:
+      - method: GET
+        name: listhubgenomes
+        description: List Hub Genomes
+        call: ucsc-genomic-data-hubs.listhubgenomes
+        with:
+          hubUrl: rest.hubUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/list/publichubs
+      name: list-publichubs
+      description: REST surface for list-publicHubs.
+      operations:
+      - method: GET
+        name: listpublichubs
+        description: List Public Hubs
+        call: ucsc-genomic-data-hubs.listpublichubs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucsc-genomic-data-hubs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for UCSC Genome Browser REST API — Hubs. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-hub-genomes
+      description: List Hub Genomes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-hubs.listhubgenomes
+      with:
+        hubUrl: tools.hubUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-public-hubs
+      description: List Public Hubs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-hubs.listpublichubs
+      outputParameters:
+      - type: object
+        mapping: $.

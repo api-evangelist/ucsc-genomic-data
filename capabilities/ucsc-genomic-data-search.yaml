@@ -1,0 +1,90 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: UCSC Genome Browser REST API — Search
+  description: 'UCSC Genome Browser REST API — Search. 1 operations. Lead operation: Search Genome Browser. Self-contained
+    Naftiko capability covering one Ucsc Genomic Data business surface.'
+  tags:
+  - Ucsc Genomic Data
+  - Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UCSC_GENOMIC_DATA_API_KEY: UCSC_GENOMIC_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucsc-genomic-data-search
+    baseUri: https://api.genome.ucsc.edu
+    description: UCSC Genome Browser REST API — Search business capability. Self-contained, no shared references.
+    resources:
+    - name: search
+      path: /search
+      operations:
+      - name: searchgenomebrowser
+        method: GET
+        description: Search Genome Browser
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search
+          in: query
+          type: string
+          description: Search query string.
+          required: true
+        - name: genome
+          in: query
+          type: string
+          description: Genome assembly identifier to search within.
+          required: true
+        - name: categories
+          in: query
+          type: string
+          description: Restrict search scope (e.g., helpDocs, publicHubs, trackDb).
+  exposes:
+  - type: rest
+    namespace: ucsc-genomic-data-search-rest
+    port: 8080
+    description: REST adapter for UCSC Genome Browser REST API — Search. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/search
+      name: search
+      description: REST surface for search.
+      operations:
+      - method: GET
+        name: searchgenomebrowser
+        description: Search Genome Browser
+        call: ucsc-genomic-data-search.searchgenomebrowser
+        with:
+          search: rest.search
+          genome: rest.genome
+          categories: rest.categories
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucsc-genomic-data-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for UCSC Genome Browser REST API — Search. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-genome-browser
+      description: Search Genome Browser
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucsc-genomic-data-search.searchgenomebrowser
+      with:
+        search: tools.search
+        genome: tools.genome
+        categories: tools.categories
+      outputParameters:
+      - type: object
+        mapping: $.
