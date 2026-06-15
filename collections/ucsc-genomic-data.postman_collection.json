@@ -1,0 +1,1411 @@
+{
+  "item": [
+    {
+      "id": "56594903-2ace-4e88-9a17-551b89bb1d77",
+      "name": "Genomes",
+      "description": {
+        "content": "Genome assembly discovery and search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a31db78e-e000-4d1d-aec8-68b220f6171f",
+          "name": "Find Genome",
+          "request": {
+            "name": "Find Genome",
+            "description": {
+              "content": "Search for genomes by name, accession number, or keywords across NCBI and UCSC assemblies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "findGenome"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string (genome name, accession, or keyword)."
+                },
+                {
+                  "disabled": false,
+                  "key": "browser",
+                  "value": "<string>",
+                  "description": "Filter by browser name."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "Filter assemblies by year."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by category."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by assembly status."
+                },
+                {
+                  "disabled": false,
+                  "key": "level",
+                  "value": "<string>",
+                  "description": "Filter by assembly level."
+                },
+                {
+                  "disabled": false,
+                  "key": "statsOnly",
+                  "value": "<integer>",
+                  "description": "Return only statistics if set to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxItemsOutput",
+                  "value": "1000000",
+                  "description": "Maximum number of items to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "315cfdf0-1a01-4747-b921-dfcf328e94fd",
+              "name": "Matching genomes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "findGenome"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "browser",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "level",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statsOnly",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "maxItemsOutput",
+                      "value": "1000000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalAssemblyCount\": 6445,\n  \"assemblyList\": [\n    {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 4214,\n      \"orderKey\": 5804,\n      \"htmlPath\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 8504,\n      \"orderKey\": 1855,\n      \"htmlPath\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26073ea1-986c-4e67-817c-e0c9cbcd320a",
+          "name": "List UCSC Genomes",
+          "request": {
+            "name": "List UCSC Genomes",
+            "description": {
+              "content": "Returns all genome database assemblies available in the UCSC Genome Browser.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "ucscGenomes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b258b899-9410-403d-86b7-4e57f0d2bcf4",
+              "name": "List of UCSC genome assemblies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "ucscGenomes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ucscGenomes\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 9755,\n      \"orderKey\": 2749,\n      \"htmlPath\": \"string\"\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 7688,\n      \"orderKey\": 3346,\n      \"htmlPath\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ff65a1f-7326-458e-8b41-28eabbf860a7",
+          "name": "List GenArk Genomes",
+          "request": {
+            "name": "List GenArk Genomes",
+            "description": {
+              "content": "Returns genome assemblies from the GenArk repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "genarkGenomes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "Filter by genome assembly name."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxItemsOutput",
+                  "value": "<integer>",
+                  "description": "Maximum number of items to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "192e823f-c4c2-4670-81d7-abbf44a5aacb",
+              "name": "GenArk genome assemblies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "genarkGenomes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxItemsOutput",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ucscGenomes\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 9755,\n      \"orderKey\": 2749,\n      \"htmlPath\": \"string\"\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 7688,\n      \"orderKey\": 3346,\n      \"htmlPath\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b17a005a-d22a-4fe3-be2a-05eed6663502",
+          "name": "List Genome Files",
+          "request": {
+            "name": "List Genome Files",
+            "description": {
+              "content": "Returns download files available for a genome assembly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "File format filter (e.g., bigBed, bigWig)."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxItemsOutput",
+                  "value": "<integer>",
+                  "description": "Maximum number of files to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de05850a-42f3-49d7-ac34-9a2f88efafaf",
+              "name": "List of downloadable files for the genome assembly.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxItemsOutput",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de30fd78-94f5-41c0-95ed-5d5e01febcb6",
+          "name": "List Chromosomes",
+          "request": {
+            "name": "List Chromosomes",
+            "description": {
+              "content": "Returns the list of chromosomes in a genome assembly or specific track.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "chromosomes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                },
+                {
+                  "disabled": false,
+                  "key": "track",
+                  "value": "<string>",
+                  "description": "Filter chromosomes by a specific track."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96f904e0-d90a-4415-8594-e6756aa85c72",
+              "name": "List of chromosomes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "chromosomes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "track",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"chromosomes\": {\n    \"key_0\": 5014,\n    \"key_1\": 1364,\n    \"key_2\": 5739\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4b2ae4b7-5c8f-45ff-b154-a99daf1c8642",
+      "name": "Tracks",
+      "description": {
+        "content": "Annotation track listings and data retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3eb8d4c-853a-43b4-beff-412f0b7a8da9",
+          "name": "List Tracks",
+          "request": {
+            "name": "List Tracks",
+            "description": {
+              "content": "Returns all data tracks available for a given genome assembly or hub.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39). Required unless hubUrl is provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackLeavesOnly",
+                  "value": "0",
+                  "description": "Set to 1 to return only leaf tracks (hide composite containers)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "597f385e-a2c0-4ab5-9313-883888da5dab",
+              "name": "List of tracks for the genome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "trackLeavesOnly",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"tracks\": {\n    \"key_0\": {\n      \"track\": \"string\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"type\": \"string\",\n      \"visibility\": \"string\",\n      \"html\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "839c4096-c0f2-4d8a-b798-dde362eb30c3",
+          "name": "Get Track Schema",
+          "request": {
+            "name": "Get Track Schema",
+            "description": {
+              "content": "Returns the schema and field definitions for a specific annotation track.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "track",
+                  "value": "<string>",
+                  "description": "(Required) Track name to return schema for."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f653851a-ab57-4320-9a78-5a936fd22c58",
+              "name": "Track schema definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "track",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16cfa199-ceaf-4c89-86c8-4b9966a1438a",
+          "name": "Get Track Data",
+          "request": {
+            "name": "Get Track Data",
+            "description": {
+              "content": "Retrieves annotation data from a specific track for a genomic region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getData",
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "track",
+                  "value": "<string>",
+                  "description": "(Required) Track name to retrieve data from."
+                },
+                {
+                  "disabled": false,
+                  "key": "chrom",
+                  "value": "<string>",
+                  "description": "Chromosome to retrieve data for."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Start position (0-based)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "End position (1-based)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxItemsOutput",
+                  "value": "1000000",
+                  "description": "Maximum number of annotation items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "jsonOutputArrays",
+                  "value": "<integer>",
+                  "description": "Set to 1 to format output as JSON arrays instead of objects."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f52ed88f-b8fa-4707-9224-d17407be6a36",
+              "name": "Track annotation data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getData",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "track",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "maxItemsOutput",
+                      "value": "1000000"
+                    },
+                    {
+                      "key": "jsonOutputArrays",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"track\": \"string\",\n  \"chrom\": \"string\",\n  \"start\": 254,\n  \"end\": 6665,\n  \"itemsReturned\": 8264\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "60ab19f5-ef8c-4907-a33c-d5142db862ae",
+      "name": "Sequences",
+      "description": {
+        "content": "DNA sequence retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f3536f2-e4cf-427e-8427-3b557b3a9091",
+          "name": "Get DNA Sequence",
+          "request": {
+            "name": "Get DNA Sequence",
+            "description": {
+              "content": "Retrieves a DNA sequence from a genome assembly for a specified genomic region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getData",
+                "sequence"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "chrom",
+                  "value": "<string>",
+                  "description": "(Required) Chromosome identifier (e.g., chr1, chrM)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Start position (0-based, half-open coordinates)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "End position (1-based, half-open coordinates)."
+                },
+                {
+                  "disabled": false,
+                  "key": "revComp",
+                  "value": "<integer>",
+                  "description": "Set to 1 to return the reverse complement sequence."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a sequence hub."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1c79be3-c733-49dc-b8b7-838222ac5eb9",
+              "name": "DNA sequence data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getData",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "revComp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"chrom\": \"string\",\n  \"start\": 8985,\n  \"end\": 8756,\n  \"dna\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0565e393-7d7c-4ddb-8554-25b5e82b1b39",
+              "name": "Invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getData",
+                    "sequence"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "revComp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e981bb7f-6f5c-40f1-9f08-3d4c5aa7fe94",
+      "name": "Hubs",
+      "description": {
+        "content": "Track hub management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5c0d726-2fdc-47d9-b341-dde3d749538e",
+          "name": "List Public Hubs",
+          "request": {
+            "name": "List Public Hubs",
+            "description": {
+              "content": "Returns all publicly available track hubs registered with UCSC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "publicHubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38849f21-331d-4ed7-8e3c-ec9925d62e7e",
+              "name": "List of public track hubs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "publicHubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicHubs\": [\n    {\n      \"hubUrl\": \"http://bHqFJyuTjCkpzpOqyphCXIbBd.ucpkn0Zz+xuKH,VeG0,AGZRcjyWjKW\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"registrationTime\": \"string\",\n      \"dbCount\": 8242\n    },\n    {\n      \"hubUrl\": \"https://KHHILvWlefTuDXfKczHurQfPyKotMh.yyeaiztVLqoI7keuj7y,fYxbx,6z\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"registrationTime\": \"string\",\n      \"dbCount\": 9934\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "454b0d17-9d62-4a64-811c-0f7454ebfb63",
+          "name": "List Hub Genomes",
+          "request": {
+            "name": "List Hub Genomes",
+            "description": {
+              "content": "Returns the list of genomes available in a specific track hub.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "hubGenomes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "(Required) URL of the hub.txt file for the track hub."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2aaa598-334f-4d19-8b99-f31f182d2c9c",
+              "name": "Genomes in the specified hub.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "hubGenomes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ucscGenomes\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 9755,\n      \"orderKey\": 2749,\n      \"htmlPath\": \"string\"\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 7688,\n      \"orderKey\": 3346,\n      \"htmlPath\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ba2f75ee-1278-4f9c-a0d1-73223579ad72",
+      "name": "Search",
+      "description": {
+        "content": "Genome browser search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "968ab32a-0577-4bdb-8478-26ce0c9fa7b9",
+          "name": "Search Genome Browser",
+          "request": {
+            "name": "Search Genome Browser",
+            "description": {
+              "content": "Searches across track data, names, and descriptions in the Genome Browser.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "(Required) Search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier to search within."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Restrict search scope (e.g., helpDocs, publicHubs, trackDb)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3db984c-aa3f-42c5-b9d4-5f19c31a9828",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.genome.ucsc.edu",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0aa0b7b9-6f39-4912-bd16-619641b59815",
+    "name": "UCSC Genome Browser REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.\n\nContact Support:\n Name: UCSC Genome Browser",
+      "type": "text/plain"
+    }
+  }
+}

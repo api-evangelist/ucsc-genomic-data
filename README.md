@@ -1,10 +1,8 @@
-# UCSC Genomic Data
+# UCSC Genomic Data (ucsc-genomic-data)
 
-The UCSC Genome Browser is a widely-used bioinformatics tool providing access to genomic data, sequence information, and annotation tracks for hundreds of organisms. The REST API provides programmatic access to genome assemblies, DNA sequences, annotation tracks, and track hubs. No authentication is required; rate limiting of one request per second is recommended.
+The UCSC Genome Browser is a widely-used bioinformatics tool providing access to genomic data, sequence information, and annotation tracks for hundreds of organisms. The REST API provides programmatic access to genome assemblies, DNA sequences, annotation tracks, and track hubs. No authentication is required; rate limiting of one request per second is recommended. Data is returned in JSON format.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml)
-
-**Human URL:** [https://genome.ucsc.edu/goldenPath/help/api.html](https://genome.ucsc.edu/goldenPath/help/api.html)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -14,64 +12,50 @@ The UCSC Genome Browser is a widely-used bioinformatics tool providing access to
 
 ## Tags
 
-Genomics, Bioinformatics, DNA, Biology, Research, Open Science
+- Genomics
+- Bioinformatics
+- DNA
+- Biology
+- Research
+- Open Science
 
 ## Timestamps
 
 - **Created:** 2025-03-01
-- **Modified:** 2026-05-03
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### UCSC Genome Browser REST API
-REST API for genome assembly discovery, DNA sequence retrieval, annotation track data, and track hub management. No authentication required.
 
-**Base URL:** `https://api.genome.ucsc.edu`
+REST API providing programmatic access to the UCSC Genome Browser's genomic data, including genome assemblies, DNA sequences, annotation tracks, and track hubs. All endpoints use HTTP GET and return JSON. No authentication is required. Rate limited to one request per second. Supports hg38, mm39, and hundreds of other assemblies.
+
+- **Human URL:** [https://genome.ucsc.edu/goldenPath/help/api.html](https://genome.ucsc.edu/goldenPath/help/api.html)
+- **Base URL:** `https://api.genome.ucsc.edu`
 
 #### Tags
-Genomics, Bioinformatics, DNA Sequences, Annotation Tracks, Genome Assemblies
+
+- Genomics
+- Bioinformatics
+- DNA Sequences
+- Annotation Tracks
+- Genome Assemblies
 
 #### Properties
+
 - [Documentation](https://genome.ucsc.edu/goldenPath/help/api.html)
-- [OpenAPI](openapi/ucsc-genomic-data-openapi.yml)
+- [OpenAPI](openapi/ucsc-genomic-data-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/ucsc-genomic-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/ucsc-genomic-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 - [Example](examples/ucsc-get-dna-sequence-example.json)
 - [Example](examples/ucsc-list-tracks-example.json)
-- [JSONSchema](json-schema/ucsc-genomic-data-sequence-schema.json)
-- [JSONSchema](json-schema/ucsc-genomic-data-track-schema.json)
+- [JSON Schema](json-schema/ucsc-genomic-data-sequence-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/ucsc-genomic-data-track-schema.json) — [JSON Schema](https://json-schema.org/specification)
 
-## Artifacts
+## Common Properties
 
-### OpenAPI Specifications
-| File | Description |
-|------|-------------|
-| [openapi/ucsc-genomic-data-openapi.yml](openapi/ucsc-genomic-data-openapi.yml) | UCSC Genome Browser REST API |
-
-### Naftiko Capabilities
-| File | Description |
-|------|-------------|
-| [capabilities/genomic-research.yaml](capabilities/genomic-research.yaml) | Genomic research workflow — sequence retrieval, track queries, genome discovery (8 tools) |
-
-**Shared definitions:** `capabilities/shared/genome-browser.yaml`
-
-### Rules
-- [rules/ucsc-genomic-data-rules.yml](rules/ucsc-genomic-data-rules.yml)
-
-### JSON Schema
-- [json-schema/ucsc-genomic-data-sequence-schema.json](json-schema/ucsc-genomic-data-sequence-schema.json)
-- [json-schema/ucsc-genomic-data-track-schema.json](json-schema/ucsc-genomic-data-track-schema.json)
-
-### JSON Structure
-- [json-structure/ucsc-genomic-data-structure.json](json-structure/ucsc-genomic-data-structure.json)
-
-### JSON-LD
-- [json-ld/ucsc-genomic-data-context.jsonld](json-ld/ucsc-genomic-data-context.jsonld)
-
-### Examples
-- [examples/ucsc-get-dna-sequence-example.json](examples/ucsc-get-dna-sequence-example.json)
-- [examples/ucsc-list-tracks-example.json](examples/ucsc-list-tracks-example.json)
-
-### Vocabulary
-- [vocabulary/ucsc-genomic-data-vocabulary.yml](vocabulary/ucsc-genomic-data-vocabulary.yml)
+- [GitHub Organization](https://github.com/ucscgenomebrowser)
+- [LinkedIn](https://www.linkedin.com/company/ucsc-genomics-institute)
 
 ## Maintainers
 
