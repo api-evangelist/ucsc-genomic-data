@@ -21,10 +21,16 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 common:
+  - type: VulnerabilityDisclosure
+    url: security/ucsc-genomic-data-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/ucsc-genomic-data-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/ucscgenomebrowser
   - type: LinkedIn
     url: https://www.linkedin.com/company/ucsc-genomics-institute
+  - url: https://genome-blog.soe.ucsc.edu/blog/feed
+    type: Blog
 apis:
   - aid: ucsc-genomic-data:ucsc-genomic-data
     name: UCSC Genome Browser REST API
