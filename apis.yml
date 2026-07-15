@@ -21,6 +21,8 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 common:
+  - type: AgenticAccess
+    url: agentic-access/ucsc-genomic-data-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/ucsc-genomic-data-vulnerability-disclosure.yml
   - type: DomainSecurity
