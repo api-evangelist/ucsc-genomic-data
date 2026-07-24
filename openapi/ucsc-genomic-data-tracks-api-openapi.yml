@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  title: UCSC Genome Browser REST Genomes Tracks API
+  description: The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.
+  version: 1.0.0
+  contact:
+    name: UCSC Genome Browser
+    url: https://genome.ucsc.edu
+servers:
+- url: https://api.genome.ucsc.edu
+  description: UCSC Primary API Server
+- url: https://genome-euro.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Europe Mirror
+- url: https://genome-asia.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Asia Mirror
+tags:
+- name: Tracks
+  description: Annotation track listings and data retrieval
+paths:
+  /list/tracks:
+    get:
+      operationId: listTracks
+      summary: List Tracks
+      description: Returns all data tracks available for a given genome assembly or hub.
+      tags:
+      - Tracks
+      parameters:
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier (e.g., hg38, mm39). Required unless hubUrl is provided.
+      - name: hubUrl
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uri
+        description: URL of the hub.txt file for a track hub.
+      - name: trackLeavesOnly
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Set to 1 to return only leaf tracks (hide composite containers).
+      responses:
+        '200':
+          description: List of tracks for the genome.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResult'
+  /list/schema:
+    get:
+      operationId: getTrackSchema
+      summary: Get Track Schema
+      description: Returns the schema and field definitions for a specific annotation track.
+      tags:
+      - Tracks
+      parameters:
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier (e.g., hg38, mm39).
+      - name: track
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Track name to return schema for.
+      - name: hubUrl
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uri
+        description: URL of the hub.txt file for a track hub.
+      responses:
+        '200':
+          description: Track schema definition.
+          content:
+            application/json:
+              schema:
+                type: object
+  /getData/track:
+    get:
+      operationId: getTrackData
+      summary: Get Track Data
+      description: Retrieves annotation data from a specific track for a genomic region.
+      tags:
+      - Tracks
+      parameters:
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier (e.g., hg38, mm39).
+      - name: track
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Track name to retrieve data from.
+      - name: chrom
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Chromosome to retrieve data for.
+      - name: start
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Start position (0-based).
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: End position (1-based).
+      - name: hubUrl
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uri
+        description: URL of the hub.txt file for a track hub.
+      - name: maxItemsOutput
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1000000
+        description: Maximum number of annotation items to return.
+      - name: jsonOutputArrays
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description: Set to 1 to format output as JSON arrays instead of objects.
+      responses:
+        '200':
+          description: Track annotation data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackDataResult'
+components:
+  schemas:
+    TrackListResult:
+      type: object
+      properties:
+        genome:
+          type: string
+          description: Genome assembly identifier.
+        tracks:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Track'
+    TrackDataResult:
+      type: object
+      properties:
+        genome:
+          type: string
+          description: Genome assembly identifier.
+        track:
+          type: string
+          description: Track name.
+        chrom:
+          type: string
+          description: Chromosome identifier.
+        start:
+          type: integer
+          description: Start position.
+        end:
+          type: integer
+          description: End position.
+        itemsReturned:
+          type: integer
+          description: Number of annotation items returned.
+    Track:
+      type: object
+      properties:
+        track:
+          type: string
+          description: Track name identifier.
+        shortLabel:
+          type: string
+          description: Short display label.
+        longLabel:
+          type: string
+          description: Long description label.
+        type:
+          type: string
+          description: Track data type (e.g., bed, bigBed, bigWig).
+        visibility:
+          type: string
+          description: Default visibility setting.
+        html:
+          type: string
+          description: Track description HTML path.

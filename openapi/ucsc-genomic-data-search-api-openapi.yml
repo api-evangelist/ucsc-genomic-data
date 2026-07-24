@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: UCSC Genome Browser REST Genomes Search API
+  description: The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.
+  version: 1.0.0
+  contact:
+    name: UCSC Genome Browser
+    url: https://genome.ucsc.edu
+servers:
+- url: https://api.genome.ucsc.edu
+  description: UCSC Primary API Server
+- url: https://genome-euro.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Europe Mirror
+- url: https://genome-asia.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Asia Mirror
+tags:
+- name: Search
+  description: Genome browser search
+paths:
+  /search:
+    get:
+      operationId: searchGenomeBrowser
+      summary: Search Genome Browser
+      description: Searches across track data, names, and descriptions in the Genome Browser.
+      tags:
+      - Search
+      parameters:
+      - name: search
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search query string.
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier to search within.
+      - name: categories
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Restrict search scope (e.g., helpDocs, publicHubs, trackDb).
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object

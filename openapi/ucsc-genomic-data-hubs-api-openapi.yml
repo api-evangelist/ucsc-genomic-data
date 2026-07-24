@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: UCSC Genome Browser REST Genomes Hubs API
+  description: The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.
+  version: 1.0.0
+  contact:
+    name: UCSC Genome Browser
+    url: https://genome.ucsc.edu
+servers:
+- url: https://api.genome.ucsc.edu
+  description: UCSC Primary API Server
+- url: https://genome-euro.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Europe Mirror
+- url: https://genome-asia.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Asia Mirror
+tags:
+- name: Hubs
+  description: Track hub management
+paths:
+  /list/publicHubs:
+    get:
+      operationId: listPublicHubs
+      summary: List Public Hubs
+      description: Returns all publicly available track hubs registered with UCSC.
+      tags:
+      - Hubs
+      responses:
+        '200':
+          description: List of public track hubs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HubListResult'
+  /list/hubGenomes:
+    get:
+      operationId: listHubGenomes
+      summary: List Hub Genomes
+      description: Returns the list of genomes available in a specific track hub.
+      tags:
+      - Hubs
+      parameters:
+      - name: hubUrl
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uri
+        description: URL of the hub.txt file for the track hub.
+      responses:
+        '200':
+          description: Genomes in the specified hub.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenomeListResult'
+components:
+  schemas:
+    GenomeAssembly:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Genome assembly identifier.
+        organism:
+          type: string
+          description: Organism name.
+        scientificName:
+          type: string
+          description: Scientific name of the organism.
+        description:
+          type: string
+          description: Assembly description.
+        sourceName:
+          type: string
+          description: Source name for the assembly.
+        taxId:
+          type: integer
+          description: NCBI taxonomy identifier.
+        orderKey:
+          type: integer
+        htmlPath:
+          type: string
+    GenomeListResult:
+      type: object
+      properties:
+        ucscGenomes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenomeAssembly'
+    HubListResult:
+      type: object
+      properties:
+        publicHubs:
+          type: array
+          items:
+            type: object
+            properties:
+              hubUrl:
+                type: string
+                format: uri
+              shortLabel:
+                type: string
+              longLabel:
+                type: string
+              registrationTime:
+                type: string
+              dbCount:
+                type: integer

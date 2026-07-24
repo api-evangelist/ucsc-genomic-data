@@ -1,0 +1,248 @@
+openapi: 3.0.0
+info:
+  title: UCSC Genome Browser REST Genomes API
+  description: The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.
+  version: 1.0.0
+  contact:
+    name: UCSC Genome Browser
+    url: https://genome.ucsc.edu
+servers:
+- url: https://api.genome.ucsc.edu
+  description: UCSC Primary API Server
+- url: https://genome-euro.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Europe Mirror
+- url: https://genome-asia.ucsc.edu/cgi-bin/hubApi
+  description: UCSC Asia Mirror
+tags:
+- name: Genomes
+  description: Genome assembly discovery and search
+paths:
+  /findGenome:
+    get:
+      operationId: findGenome
+      summary: Find Genome
+      description: Search for genomes by name, accession number, or keywords across NCBI and UCSC assemblies.
+      tags:
+      - Genomes
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search query string (genome name, accession, or keyword).
+      - name: browser
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by browser name.
+      - name: year
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Filter assemblies by year.
+      - name: category
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by category.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by assembly status.
+      - name: level
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by assembly level.
+      - name: statsOnly
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+        description: Return only statistics if set to 1.
+      - name: maxItemsOutput
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1000000
+        description: Maximum number of items to return.
+      responses:
+        '200':
+          description: Matching genomes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenomeSearchResult'
+  /list/ucscGenomes:
+    get:
+      operationId: listUcscGenomes
+      summary: List UCSC Genomes
+      description: Returns all genome database assemblies available in the UCSC Genome Browser.
+      tags:
+      - Genomes
+      responses:
+        '200':
+          description: List of UCSC genome assemblies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenomeListResult'
+  /list/genarkGenomes:
+    get:
+      operationId: listGenarkGenomes
+      summary: List GenArk Genomes
+      description: Returns genome assemblies from the GenArk repository.
+      tags:
+      - Genomes
+      parameters:
+      - name: genome
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by genome assembly name.
+      - name: maxItemsOutput
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to return.
+      responses:
+        '200':
+          description: GenArk genome assemblies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenomeListResult'
+  /list/files:
+    get:
+      operationId: listFiles
+      summary: List Genome Files
+      description: Returns download files available for a genome assembly.
+      tags:
+      - Genomes
+      parameters:
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier (e.g., hg38, mm39).
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+        description: File format filter (e.g., bigBed, bigWig).
+      - name: maxItemsOutput
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of files to return.
+      responses:
+        '200':
+          description: List of downloadable files for the genome assembly.
+          content:
+            application/json:
+              schema:
+                type: object
+  /list/chromosomes:
+    get:
+      operationId: listChromosomes
+      summary: List Chromosomes
+      description: Returns the list of chromosomes in a genome assembly or specific track.
+      tags:
+      - Genomes
+      parameters:
+      - name: genome
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Genome assembly identifier (e.g., hg38, mm39).
+      - name: hubUrl
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uri
+        description: URL of the hub.txt file for a track hub.
+      - name: track
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter chromosomes by a specific track.
+      responses:
+        '200':
+          description: List of chromosomes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChromosomeListResult'
+components:
+  schemas:
+    GenomeAssembly:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Genome assembly identifier.
+        organism:
+          type: string
+          description: Organism name.
+        scientificName:
+          type: string
+          description: Scientific name of the organism.
+        description:
+          type: string
+          description: Assembly description.
+        sourceName:
+          type: string
+          description: Source name for the assembly.
+        taxId:
+          type: integer
+          description: NCBI taxonomy identifier.
+        orderKey:
+          type: integer
+        htmlPath:
+          type: string
+    GenomeSearchResult:
+      type: object
+      properties:
+        totalAssemblyCount:
+          type: integer
+          description: Total number of matching assemblies.
+        assemblyList:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenomeAssembly'
+    GenomeListResult:
+      type: object
+      properties:
+        ucscGenomes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenomeAssembly'
+    ChromosomeListResult:
+      type: object
+      properties:
+        genome:
+          type: string
+        chromosomes:
+          type: object
+          additionalProperties:
+            type: integer
+            description: Chromosome size in base pairs.
