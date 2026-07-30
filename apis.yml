@@ -6,9 +6,21 @@ description: >-
   sequences, annotation tracks, and track hubs. No authentication is required; rate limiting of one request per second
   is recommended. Data is returned in JSON format.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Freemium · Open access
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ucsc-genomic-data.png
 tags:
   - Genomics
   - Bioinformatics
@@ -34,33 +46,106 @@ common:
   - url: https://genome-blog.soe.ucsc.edu/blog/feed
     type: Blog
 apis:
-  - aid: ucsc-genomic-data:ucsc-genomic-data
-    name: UCSC Genome Browser REST API
-    description: >-
-      REST API providing programmatic access to the UCSC Genome Browser's genomic data, including genome assemblies, DNA
-      sequences, annotation tracks, and track hubs. All endpoints use HTTP GET and return JSON. No authentication is
-      required. Rate limited to one request per second. Supports hg38, mm39, and hundreds of other assemblies.
-    humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
-    baseURL: https://api.genome.ucsc.edu
-    tags:
-      - Genomics
-      - Bioinformatics
-      - DNA Sequences
-      - Annotation Tracks
-      - Genome Assemblies
-    properties:
-      - type: Documentation
-        url: https://genome.ucsc.edu/goldenPath/help/api.html
-      - type: OpenAPI
-        url: openapi/ucsc-genomic-data-openapi.yml
-      - type: Examples
-        url: examples/ucsc-get-dna-sequence-example.json
-      - type: Examples
-        url: examples/ucsc-list-tracks-example.json
-      - type: JSONSchema
-        url: json-schema/ucsc-genomic-data-sequence-schema.json
-      - type: JSONSchema
-        url: json-schema/ucsc-genomic-data-track-schema.json
+- aid: ucsc-genomic-data:ucsc-genomic-data-genomes-api
+  name: UCSC Genomic Data Genomes API
+  description: Genome assembly discovery and search
+  humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+  baseURL: https://api.genome.ucsc.edu
+  tags:
+  - Genomes
+  properties:
+  - type: OpenAPI
+    url: openapi/ucsc-genomic-data-genomes-api-openapi.yml
+  - type: Documentation
+    url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - type: Examples
+    url: examples/ucsc-get-dna-sequence-example.json
+  - type: Examples
+    url: examples/ucsc-list-tracks-example.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-track-schema.json
+- aid: ucsc-genomic-data:ucsc-genomic-data-hubs-api
+  name: UCSC Genomic Data Hubs API
+  description: Track hub management
+  humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+  baseURL: https://api.genome.ucsc.edu
+  tags:
+  - Hubs
+  properties:
+  - type: OpenAPI
+    url: openapi/ucsc-genomic-data-hubs-api-openapi.yml
+  - type: Documentation
+    url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - type: Examples
+    url: examples/ucsc-get-dna-sequence-example.json
+  - type: Examples
+    url: examples/ucsc-list-tracks-example.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-track-schema.json
+- aid: ucsc-genomic-data:ucsc-genomic-data-search-api
+  name: UCSC Genomic Data Search API
+  description: Genome browser search
+  humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+  baseURL: https://api.genome.ucsc.edu
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/ucsc-genomic-data-search-api-openapi.yml
+  - type: Documentation
+    url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - type: Examples
+    url: examples/ucsc-get-dna-sequence-example.json
+  - type: Examples
+    url: examples/ucsc-list-tracks-example.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-track-schema.json
+- aid: ucsc-genomic-data:ucsc-genomic-data-sequences-api
+  name: UCSC Genomic Data Sequences API
+  description: DNA sequence retrieval
+  humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+  baseURL: https://api.genome.ucsc.edu
+  tags:
+  - Sequences
+  properties:
+  - type: OpenAPI
+    url: openapi/ucsc-genomic-data-sequences-api-openapi.yml
+  - type: Documentation
+    url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - type: Examples
+    url: examples/ucsc-get-dna-sequence-example.json
+  - type: Examples
+    url: examples/ucsc-list-tracks-example.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-track-schema.json
+- aid: ucsc-genomic-data:ucsc-genomic-data-tracks-api
+  name: UCSC Genomic Data Tracks API
+  description: Annotation track listings and data retrieval
+  humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+  baseURL: https://api.genome.ucsc.edu
+  tags:
+  - Tracks
+  properties:
+  - type: OpenAPI
+    url: openapi/ucsc-genomic-data-tracks-api-openapi.yml
+  - type: Documentation
+    url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - type: Examples
+    url: examples/ucsc-get-dna-sequence-example.json
+  - type: Examples
+    url: examples/ucsc-list-tracks-example.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-sequence-schema.json
+  - type: JSONSchema
+    url: json-schema/ucsc-genomic-data-track-schema.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
