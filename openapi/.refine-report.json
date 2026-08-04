@@ -1,0 +1,22 @@
+{
+  "provider": "ucsc-genomic-data",
+  "sources": [
+    "ucsc-genomic-data-genomes-api-openapi.yml",
+    "ucsc-genomic-data-hubs-api-openapi.yml",
+    "ucsc-genomic-data-search-api-openapi.yml",
+    "ucsc-genomic-data-sequences-api-openapi.yml",
+    "ucsc-genomic-data-tracks-api-openapi.yml"
+  ],
+  "outputs": [
+    "ucsc-genomic-data-genomes-api-openapi.yml",
+    "ucsc-genomic-data-hubs-api-openapi.yml",
+    "ucsc-genomic-data-search-api-openapi.yml",
+    "ucsc-genomic-data-sequences-api-openapi.yml",
+    "ucsc-genomic-data-tracks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
