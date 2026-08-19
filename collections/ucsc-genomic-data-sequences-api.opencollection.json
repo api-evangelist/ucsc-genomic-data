@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UCSC Genome Browser REST Genomes Sequences API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sequences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get DNA Sequence",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/getData/sequence",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39)."
+              },
+              {
+                "name": "chrom",
+                "value": "",
+                "type": "query",
+                "description": "Chromosome identifier (e.g., chr1, chrM)."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start position (0-based, half-open coordinates)."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End position (1-based, half-open coordinates)."
+              },
+              {
+                "name": "revComp",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return the reverse complement sequence."
+              },
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for a sequence hub."
+              }
+            ]
+          },
+          "docs": "Retrieves a DNA sequence from a genome assembly for a specified genomic region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

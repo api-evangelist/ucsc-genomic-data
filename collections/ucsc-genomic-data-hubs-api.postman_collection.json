@@ -1,0 +1,188 @@
+{
+  "item": [
+    {
+      "id": "d8097d6a-e61a-4ca9-bd5c-8e7a1341d379",
+      "name": "Hubs",
+      "description": {
+        "content": "Track hub management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f654ea9-c25e-4d57-a868-138b6c15bf70",
+          "name": "List Public Hubs",
+          "request": {
+            "name": "List Public Hubs",
+            "description": {
+              "content": "Returns all publicly available track hubs registered with UCSC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "publicHubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc52bd89-afbf-4b7d-b2d4-07e906d908ba",
+              "name": "List of public track hubs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "publicHubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicHubs\": [\n    {\n      \"hubUrl\": \"http://vSXLoGiePwXHZgroUwzT.pgrqFvSeX.QskyAhQ5nFKlrTbTgOTl++nPODXBjpbjU.GrbTJ5\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"registrationTime\": \"string\",\n      \"dbCount\": 769\n    },\n    {\n      \"hubUrl\": \"https://MedAlUQ.lbjMzf,V3IhidBjsYj3wf9PmRpejrlk9t\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"registrationTime\": \"string\",\n      \"dbCount\": 5897\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d302f785-eab8-406f-9ee0-d303115703df",
+          "name": "List Hub Genomes",
+          "request": {
+            "name": "List Hub Genomes",
+            "description": {
+              "content": "Returns the list of genomes available in a specific track hub.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "hubGenomes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "(Required) URL of the hub.txt file for the track hub."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a5ba602-3767-410b-8d4c-58dc75c18e2d",
+              "name": "Genomes in the specified hub.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "hubGenomes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ucscGenomes\": {\n    \"key_0\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 4621,\n      \"orderKey\": 1381,\n      \"htmlPath\": \"string\"\n    },\n    \"key_1\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 7942,\n      \"orderKey\": 166,\n      \"htmlPath\": \"string\"\n    },\n    \"key_2\": {\n      \"name\": \"string\",\n      \"organism\": \"string\",\n      \"scientificName\": \"string\",\n      \"description\": \"string\",\n      \"sourceName\": \"string\",\n      \"taxId\": 1703,\n      \"orderKey\": 597,\n      \"htmlPath\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.genome.ucsc.edu",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "136af565-e886-4062-adce-128d287258f3",
+    "name": "UCSC Genome Browser REST Genomes Hubs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.\n\nContact Support:\n Name: UCSC Genome Browser",
+      "type": "text/plain"
+    }
+  }
+}

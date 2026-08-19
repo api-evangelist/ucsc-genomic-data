@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UCSC Genome Browser REST Genomes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Genomes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Genome",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/findGenome",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string (genome name, accession, or keyword)."
+              },
+              {
+                "name": "browser",
+                "value": "",
+                "type": "query",
+                "description": "Filter by browser name."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Filter assemblies by year."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by category."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by assembly status."
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "Filter by assembly level."
+              },
+              {
+                "name": "statsOnly",
+                "value": "",
+                "type": "query",
+                "description": "Return only statistics if set to 1."
+              },
+              {
+                "name": "maxItemsOutput",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "Search for genomes by name, accession number, or keywords across NCBI and UCSC assemblies."
+        },
+        {
+          "info": {
+            "name": "List UCSC Genomes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/ucscGenomes"
+          },
+          "docs": "Returns all genome database assemblies available in the UCSC Genome Browser."
+        },
+        {
+          "info": {
+            "name": "List GenArk Genomes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/genarkGenomes",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Filter by genome assembly name."
+              },
+              {
+                "name": "maxItemsOutput",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return."
+              }
+            ]
+          },
+          "docs": "Returns genome assemblies from the GenArk repository."
+        },
+        {
+          "info": {
+            "name": "List Genome Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/files",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "File format filter (e.g., bigBed, bigWig)."
+              },
+              {
+                "name": "maxItemsOutput",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of files to return."
+              }
+            ]
+          },
+          "docs": "Returns download files available for a genome assembly."
+        },
+        {
+          "info": {
+            "name": "List Chromosomes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/chromosomes",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39)."
+              },
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for a track hub."
+              },
+              {
+                "name": "track",
+                "value": "",
+                "type": "query",
+                "description": "Filter chromosomes by a specific track."
+              }
+            ]
+          },
+          "docs": "Returns the list of chromosomes in a genome assembly or specific track."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

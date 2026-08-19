@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UCSC Genome Browser REST Genomes Tracks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/tracks",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39). Required unless hubUrl is provided."
+              },
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for a track hub."
+              },
+              {
+                "name": "trackLeavesOnly",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to return only leaf tracks (hide composite containers)."
+              }
+            ]
+          },
+          "docs": "Returns all data tracks available for a given genome assembly or hub."
+        },
+        {
+          "info": {
+            "name": "Get Track Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/schema",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39)."
+              },
+              {
+                "name": "track",
+                "value": "",
+                "type": "query",
+                "description": "Track name to return schema for."
+              },
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for a track hub."
+              }
+            ]
+          },
+          "docs": "Returns the schema and field definitions for a specific annotation track."
+        },
+        {
+          "info": {
+            "name": "Get Track Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/getData/track",
+            "params": [
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier (e.g., hg38, mm39)."
+              },
+              {
+                "name": "track",
+                "value": "",
+                "type": "query",
+                "description": "Track name to retrieve data from."
+              },
+              {
+                "name": "chrom",
+                "value": "",
+                "type": "query",
+                "description": "Chromosome to retrieve data for."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start position (0-based)."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End position (1-based)."
+              },
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for a track hub."
+              },
+              {
+                "name": "maxItemsOutput",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of annotation items to return."
+              },
+              {
+                "name": "jsonOutputArrays",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to format output as JSON arrays instead of objects."
+              }
+            ]
+          },
+          "docs": "Retrieves annotation data from a specific track for a genomic region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,394 @@
+{
+  "item": [
+    {
+      "id": "71e06647-9b3e-4c01-b6a4-6c0dc1b3b018",
+      "name": "Tracks",
+      "description": {
+        "content": "Annotation track listings and data retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bb4e870-ba3b-495d-87ab-14ceac5c36aa",
+          "name": "List Tracks",
+          "request": {
+            "name": "List Tracks",
+            "description": {
+              "content": "Returns all data tracks available for a given genome assembly or hub.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39). Required unless hubUrl is provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackLeavesOnly",
+                  "value": "0",
+                  "description": "Set to 1 to return only leaf tracks (hide composite containers)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b86aab0e-94c4-442d-b5f4-e84af4cb6d05",
+              "name": "List of tracks for the genome.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "trackLeavesOnly",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"tracks\": {\n    \"key_0\": {\n      \"track\": \"string\",\n      \"shortLabel\": \"string\",\n      \"longLabel\": \"string\",\n      \"type\": \"string\",\n      \"visibility\": \"string\",\n      \"html\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1d5d549-6fe9-4cd6-8065-a47d23202d7d",
+          "name": "Get Track Schema",
+          "request": {
+            "name": "Get Track Schema",
+            "description": {
+              "content": "Returns the schema and field definitions for a specific annotation track.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "track",
+                  "value": "<string>",
+                  "description": "(Required) Track name to return schema for."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "add70af4-17dc-43d8-83c7-417ed355cfde",
+              "name": "Track schema definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "track",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e1d60a9-1724-4552-bb1f-c6e73ef6c54f",
+          "name": "Get Track Data",
+          "request": {
+            "name": "Get Track Data",
+            "description": {
+              "content": "Retrieves annotation data from a specific track for a genomic region.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getData",
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "genome",
+                  "value": "<string>",
+                  "description": "(Required) Genome assembly identifier (e.g., hg38, mm39)."
+                },
+                {
+                  "disabled": false,
+                  "key": "track",
+                  "value": "<string>",
+                  "description": "(Required) Track name to retrieve data from."
+                },
+                {
+                  "disabled": false,
+                  "key": "chrom",
+                  "value": "<string>",
+                  "description": "Chromosome to retrieve data for."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "Start position (0-based)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "End position (1-based)."
+                },
+                {
+                  "disabled": false,
+                  "key": "hubUrl",
+                  "value": "<uri>",
+                  "description": "URL of the hub.txt file for a track hub."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxItemsOutput",
+                  "value": "1000000",
+                  "description": "Maximum number of annotation items to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "jsonOutputArrays",
+                  "value": "<integer>",
+                  "description": "Set to 1 to format output as JSON arrays instead of objects."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db933c81-6497-48f0-b055-19a06c08958c",
+              "name": "Track annotation data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getData",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "genome",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "track",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hubUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "maxItemsOutput",
+                      "value": "1000000"
+                    },
+                    {
+                      "key": "jsonOutputArrays",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"genome\": \"string\",\n  \"track\": \"string\",\n  \"chrom\": \"string\",\n  \"start\": 6081,\n  \"end\": 1982,\n  \"itemsReturned\": 8147\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.genome.ucsc.edu",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d80cdbe6-c689-478b-8679-7d5e2e57e8ce",
+    "name": "UCSC Genome Browser REST Genomes Tracks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The UCSC Genome Browser REST API provides programmatic access to genomic data, sequences, annotation tracks, genome assemblies, and track hubs. All endpoints return JSON and require no authentication. Rate limiting of one request per second is recommended to avoid the botDelay system.\n\nContact Support:\n Name: UCSC Genome Browser",
+      "type": "text/plain"
+    }
+  }
+}

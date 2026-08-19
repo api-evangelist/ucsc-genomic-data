@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UCSC Genome Browser REST Genomes Search API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Genome Browser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/search",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query string."
+              },
+              {
+                "name": "genome",
+                "value": "",
+                "type": "query",
+                "description": "Genome assembly identifier to search within."
+              },
+              {
+                "name": "categories",
+                "value": "",
+                "type": "query",
+                "description": "Restrict search scope (e.g., helpDocs, publicHubs, trackDb)."
+              }
+            ]
+          },
+          "docs": "Searches across track data, names, and descriptions in the Genome Browser."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

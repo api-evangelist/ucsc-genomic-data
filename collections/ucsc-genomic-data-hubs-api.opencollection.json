@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "UCSC Genome Browser REST Genomes Hubs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hubs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Public Hubs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/publicHubs"
+          },
+          "docs": "Returns all publicly available track hubs registered with UCSC."
+        },
+        {
+          "info": {
+            "name": "List Hub Genomes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.genome.ucsc.edu/list/hubGenomes",
+            "params": [
+              {
+                "name": "hubUrl",
+                "value": "",
+                "type": "query",
+                "description": "URL of the hub.txt file for the track hub."
+              }
+            ]
+          },
+          "docs": "Returns the list of genomes available in a specific track hub."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
