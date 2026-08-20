@@ -72,6 +72,8 @@ apis:
   humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
   baseURL: https://api.genome.ucsc.edu
   tags:
+  - Hub
+  tags_raw:
   - Hubs
   properties:
   - type: OpenAPI
