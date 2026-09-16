@@ -1,10 +1,9 @@
 aid: ucsc-genomic-data
 name: UCSC Genomic Data
-description: >-
-  The UCSC Genome Browser is a widely-used bioinformatics tool providing access to genomic data, sequence information,
-  and annotation tracks for hundreds of organisms. The REST API provides programmatic access to genome assemblies, DNA
-  sequences, annotation tracks, and track hubs. No authentication is required; rate limiting of one request per second
-  is recommended. Data is returned in JSON format.
+description: The UCSC Genome Browser is a widely-used bioinformatics tool providing access to genomic
+  data, sequence information, and annotation tracks for hundreds of organisms. The REST API provides programmatic
+  access to genome assemblies, DNA sequences, annotation tracks, and track hubs. No authentication is
+  required; rate limiting of one request per second is recommended. Data is returned in JSON format.
 type: Index
 deliveryModel:
   model: unknown
@@ -33,29 +32,31 @@ position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ucsc-genomic-data.png
 tags:
-  - Genomics
-  - Bioinformatics
-  - DNA
-  - Biology
-  - Research
-  - Open Science
+- Genomics
+- Bioinformatics
+- DNA
+- Biology
+- Research
+- Open Science
 created: '2025-03-01'
-modified: '2026-05-19'
+modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 common:
-  - type: AgenticAccess
-    url: agentic-access/ucsc-genomic-data-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/ucsc-genomic-data-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/ucsc-genomic-data-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/ucscgenomebrowser
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/ucsc-genomics-institute
-  - url: https://genome-blog.soe.ucsc.edu/blog/feed
-    type: Blog
+- type: Website
+  url: https://ucsc.edu
+- type: AgenticAccess
+  url: agentic-access/ucsc-genomic-data-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/ucsc-genomic-data-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/ucsc-genomic-data-domain-security.yml
+- type: GitHubOrganization
+  url: https://github.com/ucscgenomebrowser
+- type: LinkedIn
+  url: https://www.linkedin.com/company/ucsc-genomics-institute
+- url: https://genome-blog.soe.ucsc.edu/blog/feed
+  type: Blog
 apis:
 - aid: ucsc-genomic-data:ucsc-genomic-data-genomes-api
   name: UCSC Genomic Data Genomes API
@@ -160,14 +161,14 @@ apis:
   - type: JSONSchema
     url: json-schema/ucsc-genomic-data-track-schema.json
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 properties:
-  - url: rules/ucsc-genomic-data-rules.yml
-    type: SpectralRules
-  - url: vocabulary/ucsc-genomic-data-vocabulary.yml
-    type: Vocabulary
-  - url: json-ld/ucsc-genomic-data-context.jsonld
-    type: JSONLDContext
-  - url: capabilities/genomic-research.yaml
-    type: X-NaftikoCapabilities
+- url: rules/ucsc-genomic-data-rules.yml
+  type: SpectralRules
+- url: vocabulary/ucsc-genomic-data-vocabulary.yml
+  type: Vocabulary
+- url: json-ld/ucsc-genomic-data-context.jsonld
+  type: JSONLDContext
+- url: capabilities/genomic-research.yaml
+  type: X-NaftikoCapabilities
