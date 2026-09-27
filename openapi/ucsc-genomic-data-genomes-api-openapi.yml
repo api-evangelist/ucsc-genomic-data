@@ -194,16 +194,6 @@ paths:
                 $ref: '#/components/schemas/ChromosomeListResult'
 components:
   schemas:
-    ChromosomeListResult:
-      type: object
-      properties:
-        genome:
-          type: string
-        chromosomes:
-          type: object
-          additionalProperties:
-            type: integer
-            description: Chromosome size in base pairs.
     GenomeAssembly:
       type: object
       properties:
@@ -229,13 +219,16 @@ components:
           type: integer
         htmlPath:
           type: string
-    GenomeListResult:
+    ChromosomeListResult:
       type: object
       properties:
-        ucscGenomes:
+        genome:
+          type: string
+        chromosomes:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/GenomeAssembly'
+            type: integer
+            description: Chromosome size in base pairs.
     GenomeSearchResult:
       type: object
       properties:
@@ -245,4 +238,11 @@ components:
         assemblyList:
           type: array
           items:
+            $ref: '#/components/schemas/GenomeAssembly'
+    GenomeListResult:
+      type: object
+      properties:
+        ucscGenomes:
+          type: object
+          additionalProperties:
             $ref: '#/components/schemas/GenomeAssembly'

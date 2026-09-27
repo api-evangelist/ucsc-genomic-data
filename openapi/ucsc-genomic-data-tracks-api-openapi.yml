@@ -159,16 +159,6 @@ paths:
                 $ref: '#/components/schemas/TrackDataResult'
 components:
   schemas:
-    TrackListResult:
-      type: object
-      properties:
-        genome:
-          type: string
-          description: Genome assembly identifier.
-        tracks:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Track'
     TrackDataResult:
       type: object
       properties:
@@ -211,3 +201,13 @@ components:
         html:
           type: string
           description: Track description HTML path.
+    TrackListResult:
+      type: object
+      properties:
+        genome:
+          type: string
+          description: Genome assembly identifier.
+        tracks:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Track'
