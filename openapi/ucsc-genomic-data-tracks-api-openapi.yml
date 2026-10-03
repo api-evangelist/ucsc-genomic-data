@@ -159,27 +159,16 @@ paths:
                 $ref: '#/components/schemas/TrackDataResult'
 components:
   schemas:
-    TrackDataResult:
+    TrackListResult:
       type: object
       properties:
         genome:
           type: string
           description: Genome assembly identifier.
-        track:
-          type: string
-          description: Track name.
-        chrom:
-          type: string
-          description: Chromosome identifier.
-        start:
-          type: integer
-          description: Start position.
-        end:
-          type: integer
-          description: End position.
-        itemsReturned:
-          type: integer
-          description: Number of annotation items returned.
+        tracks:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Track'
     Track:
       type: object
       properties:
@@ -201,13 +190,24 @@ components:
         html:
           type: string
           description: Track description HTML path.
-    TrackListResult:
+    TrackDataResult:
       type: object
       properties:
         genome:
           type: string
           description: Genome assembly identifier.
-        tracks:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Track'
+        track:
+          type: string
+          description: Track name.
+        chrom:
+          type: string
+          description: Chromosome identifier.
+        start:
+          type: integer
+          description: Start position.
+        end:
+          type: integer
+          description: End position.
+        itemsReturned:
+          type: integer
+          description: Number of annotation items returned.

@@ -55,6 +55,32 @@ paths:
                 $ref: '#/components/schemas/GenomeListResult'
 components:
   schemas:
+    GenomeListResult:
+      type: object
+      properties:
+        ucscGenomes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenomeAssembly'
+    HubListResult:
+      type: object
+      properties:
+        publicHubs:
+          type: array
+          items:
+            type: object
+            properties:
+              hubUrl:
+                type: string
+                format: uri
+              shortLabel:
+                type: string
+              longLabel:
+                type: string
+              registrationTime:
+                type: string
+              dbCount:
+                type: integer
     GenomeAssembly:
       type: object
       properties:
@@ -80,29 +106,3 @@ components:
           type: integer
         htmlPath:
           type: string
-    HubListResult:
-      type: object
-      properties:
-        publicHubs:
-          type: array
-          items:
-            type: object
-            properties:
-              hubUrl:
-                type: string
-                format: uri
-              shortLabel:
-                type: string
-              longLabel:
-                type: string
-              registrationTime:
-                type: string
-              dbCount:
-                type: integer
-    GenomeListResult:
-      type: object
-      properties:
-        ucscGenomes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GenomeAssembly'
