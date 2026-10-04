@@ -55,13 +55,6 @@ paths:
                 $ref: '#/components/schemas/GenomeListResult'
 components:
   schemas:
-    GenomeListResult:
-      type: object
-      properties:
-        ucscGenomes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GenomeAssembly'
     HubListResult:
       type: object
       properties:
@@ -81,6 +74,13 @@ components:
                 type: string
               dbCount:
                 type: integer
+    GenomeListResult:
+      type: object
+      properties:
+        ucscGenomes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GenomeAssembly'
     GenomeAssembly:
       type: object
       properties:
