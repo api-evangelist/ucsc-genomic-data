@@ -43,6 +43,12 @@ modified: '2026-09-16'
 url: https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 common:
+- type: Plans
+  url: plans/ucsc-genomic-data-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ucsc-genomic-data-rate-limits.yml
+- type: FinOps
+  url: finops/ucsc-genomic-data-finops.yml
 - type: Website
   url: https://ucsc.edu
 - type: AgenticAccess
