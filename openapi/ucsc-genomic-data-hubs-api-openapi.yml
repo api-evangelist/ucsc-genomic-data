@@ -55,6 +55,31 @@ paths:
                 $ref: '#/components/schemas/GenomeListResult'
 components:
   schemas:
+    GenomeAssembly:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Genome assembly identifier.
+        organism:
+          type: string
+          description: Organism name.
+        scientificName:
+          type: string
+          description: Scientific name of the organism.
+        description:
+          type: string
+          description: Assembly description.
+        sourceName:
+          type: string
+          description: Source name for the assembly.
+        taxId:
+          type: integer
+          description: NCBI taxonomy identifier.
+        orderKey:
+          type: integer
+        htmlPath:
+          type: string
     HubListResult:
       type: object
       properties:
@@ -81,28 +106,3 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/GenomeAssembly'
-    GenomeAssembly:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Genome assembly identifier.
-        organism:
-          type: string
-          description: Organism name.
-        scientificName:
-          type: string
-          description: Scientific name of the organism.
-        description:
-          type: string
-          description: Assembly description.
-        sourceName:
-          type: string
-          description: Source name for the assembly.
-        taxId:
-          type: integer
-          description: NCBI taxonomy identifier.
-        orderKey:
-          type: integer
-        htmlPath:
-          type: string

@@ -194,6 +194,16 @@ paths:
                 $ref: '#/components/schemas/ChromosomeListResult'
 components:
   schemas:
+    GenomeSearchResult:
+      type: object
+      properties:
+        totalAssemblyCount:
+          type: integer
+          description: Total number of matching assemblies.
+        assemblyList:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenomeAssembly'
     ChromosomeListResult:
       type: object
       properties:
@@ -204,13 +214,6 @@ components:
           additionalProperties:
             type: integer
             description: Chromosome size in base pairs.
-    GenomeListResult:
-      type: object
-      properties:
-        ucscGenomes:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GenomeAssembly'
     GenomeAssembly:
       type: object
       properties:
@@ -236,13 +239,10 @@ components:
           type: integer
         htmlPath:
           type: string
-    GenomeSearchResult:
+    GenomeListResult:
       type: object
       properties:
-        totalAssemblyCount:
-          type: integer
-          description: Total number of matching assemblies.
-        assemblyList:
-          type: array
-          items:
+        ucscGenomes:
+          type: object
+          additionalProperties:
             $ref: '#/components/schemas/GenomeAssembly'

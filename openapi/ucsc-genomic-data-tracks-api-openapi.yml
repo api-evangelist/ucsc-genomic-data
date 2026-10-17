@@ -159,6 +159,27 @@ paths:
                 $ref: '#/components/schemas/TrackDataResult'
 components:
   schemas:
+    Track:
+      type: object
+      properties:
+        track:
+          type: string
+          description: Track name identifier.
+        shortLabel:
+          type: string
+          description: Short display label.
+        longLabel:
+          type: string
+          description: Long description label.
+        type:
+          type: string
+          description: Track data type (e.g., bed, bigBed, bigWig).
+        visibility:
+          type: string
+          description: Default visibility setting.
+        html:
+          type: string
+          description: Track description HTML path.
     TrackDataResult:
       type: object
       properties:
@@ -190,24 +211,3 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/Track'
-    Track:
-      type: object
-      properties:
-        track:
-          type: string
-          description: Track name identifier.
-        shortLabel:
-          type: string
-          description: Short display label.
-        longLabel:
-          type: string
-          description: Long description label.
-        type:
-          type: string
-          description: Track data type (e.g., bed, bigBed, bigWig).
-        visibility:
-          type: string
-          description: Default visibility setting.
-        html:
-          type: string
-          description: Track description HTML path.
