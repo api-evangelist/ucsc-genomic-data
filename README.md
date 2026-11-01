@@ -1,4 +1,4 @@
-# UCSC Genomic Data (ucsc-genomic-data)
+# UCSC Genomic Data
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,162 @@
 
 The UCSC Genome Browser is a widely-used bioinformatics tool providing access to genomic data, sequence information, and annotation tracks for hundreds of organisms. The REST API provides programmatic access to genome assemblies, DNA sequences, annotation tracks, and track hubs. No authentication is required; rate limiting of one request per second is recommended. Data is returned in JSON format.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ucsc-genomic-data/refs/heads/main/apis.yml)
+**Areas:** Genomics · Bioinformatics · DNA · Biology · Research · Open Science
 
-## Scope
+## UCSC Genomic Data on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for UCSC Genomic Data is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ucsc-genomic-data/](https://apis.io/providers/ucsc-genomic-data/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Genomics
-- Bioinformatics
-- DNA
-- Biology
-- Research
-- Open Science
+- [UCSC Genomic Data Genomes API](https://apis.io/apis/ucsc-genomic-data/ucsc-genomic-data-genomes-api/) — Genome assembly discovery and search
+- [UCSC Genomic Data Hubs API](https://apis.io/apis/ucsc-genomic-data/ucsc-genomic-data-hubs-api/) — Track hub management
+- [UCSC Genomic Data Search API](https://apis.io/apis/ucsc-genomic-data/ucsc-genomic-data-search-api/) — Genome browser search
+- [UCSC Genomic Data Sequences API](https://apis.io/apis/ucsc-genomic-data/ucsc-genomic-data-sequences-api/) — DNA sequence retrieval
+- [UCSC Genomic Data Tracks API](https://apis.io/apis/ucsc-genomic-data/ucsc-genomic-data-tracks-api/) — Annotation track listings and data retrieval
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### UCSC Genome Browser REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API providing programmatic access to the UCSC Genome Browser's genomic data, including genome assemblies, DNA sequences, annotation tracks, and track hubs. All endpoints use HTTP GET and return JSON. No authentication is required. Rate limited to one request per second. Supports hg38, mm39, and hundreds of other assemblies.
+- [Ucsc Genomic Data Agentic Access](https://apis.io/agentic-access/ucsc-genomic-data/ucsc-genomic-data-agentic-access/)
 
-- **Human URL:** [https://genome.ucsc.edu/goldenPath/help/api.html](https://genome.ucsc.edu/goldenPath/help/api.html)
-- **Base URL:** `https://api.genome.ucsc.edu`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Genomics
-- Bioinformatics
-- DNA Sequences
-- Annotation Tracks
-- Genome Assemblies
+- [UCSC DNA Sequence Result](https://apis.io/schemas/ucsc-genomic-data/ucsc-genomic-data-sequence/)
+- [UCSC Genome Browser Track](https://apis.io/schemas/ucsc-genomic-data/ucsc-genomic-data-track/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://genome.ucsc.edu/goldenPath/help/api.html)
-- [OpenAPI](openapi/ucsc-genomic-data-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/ucsc-genomic-data.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/ucsc-genomic-data.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/ucsc-get-dna-sequence-example.json)
-- [Example](examples/ucsc-list-tracks-example.json)
-- [JSON Schema](json-schema/ucsc-genomic-data-sequence-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/ucsc-genomic-data-track-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Ucsc Genomic Data Structure](https://apis.io/json-structure/ucsc-genomic-data/ucsc-genomic-data-structure/)
 
-- [GitHub Organization](https://github.com/ucscgenomebrowser)
-- [LinkedIn](https://www.linkedin.com/company/ucsc-genomics-institute)
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+- [Ucsc Genomic Data Context](https://apis.io/jsonld/ucsc-genomic-data/ucsc-genomic-data-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [UCSC Genomic Data API Vocabulary](https://apis.io/vocabularies/ucsc-genomic-data/ucsc-genomic-data-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Ucsc Get Dna Sequence Example](https://apis.io/examples/ucsc-genomic-data/ucsc-get-dna-sequence-example/)
+- [Ucsc List Tracks Example](https://apis.io/examples/ucsc-genomic-data/ucsc-list-tracks-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [UCSC Genome Browser REST API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data/)
+- [UCSC Genome Browser REST Genomes API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data-genomes-api/)
+- [UCSC Genome Browser REST Genomes Hubs API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data-hubs-api/)
+- [UCSC Genome Browser REST Genomes Search API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data-search-api/)
+- [UCSC Genome Browser REST Genomes Sequences API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data-sequences-api/)
+- [UCSC Genome Browser REST Genomes Tracks API](https://apis.io/collections/ucsc-genomic-data/open-ucsc-genomic-data-tracks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [UCSC Genomic Data — jsonschema rules](https://apis.io/rules/ucsc-genomic-data/ucsc-genomic-data-jsonschema-spectral-rules/)
+- [UCSC Genomic Data API Rules](https://apis.io/rules/ucsc-genomic-data/ucsc-genomic-data-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Ucsc Genomic Data Domain Security](https://apis.io/security/ucsc-genomic-data/ucsc-genomic-data-domain-security/)
+- [Ucsc Genomic Data Vulnerability Disclosure](https://apis.io/security/ucsc-genomic-data/ucsc-genomic-data-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Ucsc Genomic Data Plans Pricing](https://apis.io/plans/ucsc-genomic-data/ucsc-genomic-data-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Ucsc Genomic Data Rate Limits](https://apis.io/rate-limits/ucsc-genomic-data/ucsc-genomic-data-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ucsc Genomic Data Finops](https://apis.io/finops/ucsc-genomic-data/ucsc-genomic-data-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://ucsc.edu)
+- [Blog](https://genome-blog.soe.ucsc.edu/blog/feed)
+- [GitHub](https://github.com/ucscgenomebrowser)
+
+## API Evangelist rating
+
+**Kin Score 29.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 60.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ucsc-genomic-data/](https://apis.io/providers/ucsc-genomic-data/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for UCSC Genomic Data: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ucsc-genomic-data/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
